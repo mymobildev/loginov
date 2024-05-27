@@ -1,14 +1,14 @@
 const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+
 import Home from "./screens/Home";
+import ProfilePc from "./screens/ProfilePc";
 import First from "./screens/First";
 import RegistOrLogin from "./screens/RegistOrLogin";
 import OTP from "./screens/OTP";
 import PopUp from "./screens/PopUp";
 import Account from "./screens/Account";
-import ProfilePc from "./screens/ProfilePc";
 import Balance from "./screens/Balance";
 import BalanceMore from "./screens/BalanceMore";
 import QR from "./screens/QR";
@@ -25,27 +25,6 @@ import { View, Text, Pressable, TouchableOpacity } from "react-native";
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
-  const [fontsLoaded, error] = useFonts({
-    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
-    "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
-    "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
-    "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
-    "Poppins-Black": require("./assets/fonts/Poppins-Black.ttf"),
-    "Roboto-Light": require("./assets/fonts/Roboto-Light.ttf"),
-    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
-    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
-    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-    "Roboto-Black": require("./assets/fonts/Roboto-Black.ttf"),
-    "ComicNeue-Regular": require("./assets/fonts/ComicNeue-Regular.ttf"),
-    "ComicNeue-Bold": require("./assets/fonts/ComicNeue-Bold.ttf"),
-    "Montserrat-Medium": require("./assets/fonts/Montserrat-Medium.ttf"),
-    "Montserrat-Black": require("./assets/fonts/Montserrat-Black.ttf"),
-  });
-
-  if (!fontsLoaded && !error) {
-    return null;
-  }
-
   return (
     <>
       <NavigationContainer>
@@ -54,6 +33,11 @@ const App = () => {
             <Stack.Screen
               name="Home"
               component={Home}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ProfilePc"
+              component={ProfilePc}
               options={{ headerShown: false }}
             />
             <Stack.Screen
@@ -79,11 +63,6 @@ const App = () => {
             <Stack.Screen
               name="Account"
               component={Account}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ProfilePc"
-              component={ProfilePc}
               options={{ headerShown: false }}
             />
             <Stack.Screen

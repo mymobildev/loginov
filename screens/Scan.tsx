@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import SystemDarkStatusBarD from "../components/SystemDarkStatusBarD";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const Scan = () => {
@@ -8,19 +8,17 @@ const Scan = () => {
     <View style={styles.scan}>
       <Image
         style={[styles.fingerprintScan1Icon, styles.iconPosition]}
-        contentFit="cover"
+        resizeMode="cover"
         source={require("../assets/fingerprintscan-1.png")}
       />
       <View style={styles.down}>
-        <Text style={[styles.text, styles.textPosition]}>100%</Text>
+        <Text style={[styles.text, styles.textFlexBox]}>100%</Text>
         <Text style={[styles.scanSource, styles.scanSourceTypo]}>
           scan source
         </Text>
       </View>
       <View style={styles.textUp}>
-        <Text style={[styles.placeYourFinger, styles.timeTypo]}>
-          Place Your Finger
-        </Text>
+        <Text style={styles.placeYourFinger}>Place Your Finger</Text>
         <Text style={[styles.pleaseUseYour, styles.scanSourceTypo]}>
           please use your fingerprint for verification
         </Text>
@@ -31,38 +29,24 @@ const Scan = () => {
         </Text>
         <Image
           style={[styles.arrowLeftIcon, styles.iconPosition]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/arrowleft1.png")}
         />
       </View>
-      <View style={[styles.systemDarkStatusBarD, styles.systemPosition]}>
-        <Text style={[styles.time, styles.timeFlexBox]}>9:41</Text>
-        <View style={styles.battery}>
-          <View style={styles.border} />
-          <Image
-            style={[styles.capIcon, styles.systemPosition]}
-            contentFit="cover"
-            source={require("../assets/cap1.png")}
-          />
-          <View style={styles.capacity} />
-        </View>
-        <Image
-          style={styles.wifiIcon}
-          contentFit="cover"
-          source={require("../assets/wifi1.png")}
-        />
-        <Image
-          style={styles.cellularConnectionIcon}
-          contentFit="cover"
-          source={require("../assets/cellular-connection1.png")}
-        />
-      </View>
-      <View style={[styles.systemDarkHomeIndicator, styles.systemPosition]}>
+      <SystemDarkStatusBarD
+        dimensionCode={require("../assets/cap1.png")}
+        dimensionCodeText={require("../assets/wifi1.png")}
+        dimensionCodeValue={require("../assets/cellular-connection1.png")}
+        propColor="#fff"
+        propBorderColor="#fff"
+        propBackgroundColor="#fff"
+      />
+      <View style={styles.systemDarkHomeIndicator}>
         <View style={styles.homeIndicator} />
       </View>
       <View style={[styles.button, styles.buttonLayout]}>
         <View style={[styles.buttonChild, styles.buttonLayout]} />
-        <Text style={[styles.continue, styles.timeFlexBox]}>Continue</Text>
+        <Text style={[styles.continue, styles.continueTypo]}>Continue</Text>
       </View>
     </View>
   );
@@ -73,12 +57,10 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     position: "absolute",
   },
-  textPosition: {
+  textFlexBox: {
     textAlign: "left",
     color: Color.colorWhite,
-    letterSpacing: 0,
     top: 0,
-    position: "absolute",
   },
   scanSourceTypo: {
     fontFamily: FontFamily.robotoRegular,
@@ -89,21 +71,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     position: "absolute",
   },
-  timeTypo: {
-    fontWeight: "600",
-    color: Color.colorWhite,
-  },
   continueTypo: {
     fontFamily: FontFamily.poppinsBold,
     fontWeight: "700",
     fontSize: FontSize.size_lg,
-  },
-  systemPosition: {
-    right: 0,
-    position: "absolute",
-  },
-  timeFlexBox: {
-    textAlign: "center",
     letterSpacing: 0,
     position: "absolute",
   },
@@ -123,6 +94,10 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_5xl,
     fontWeight: "500",
     fontFamily: FontFamily.poppinsMedium,
+    letterSpacing: 0,
+    textAlign: "left",
+    color: Color.colorWhite,
+    position: "absolute",
   },
   scanSource: {
     top: 36,
@@ -136,10 +111,11 @@ const styles = StyleSheet.create({
   },
   placeYourFinger: {
     left: 28,
+    fontWeight: "600",
     fontFamily: FontFamily.poppinsSemiBold,
     fontSize: FontSize.size_lg,
-    fontWeight: "600",
     textAlign: "left",
+    color: Color.colorWhite,
     letterSpacing: 0,
     top: 0,
     position: "absolute",
@@ -158,9 +134,7 @@ const styles = StyleSheet.create({
     left: 30,
     textAlign: "left",
     color: Color.colorWhite,
-    letterSpacing: 0,
     top: 0,
-    position: "absolute",
   },
   arrowLeftIcon: {
     top: 4,
@@ -175,67 +149,6 @@ const styles = StyleSheet.create({
     left: 30,
     position: "absolute",
   },
-  time: {
-    marginTop: -7.5,
-    left: 21,
-    fontSize: FontSize.size_mini,
-    fontFamily: FontFamily.sFProText,
-    width: 54,
-    top: "50%",
-    fontWeight: "600",
-    color: Color.colorWhite,
-  },
-  border: {
-    marginTop: -5.65,
-    right: 2,
-    borderRadius: 3,
-    borderStyle: "solid",
-    borderColor: Color.colorWhite,
-    borderWidth: 1,
-    width: 22,
-    opacity: 0.35,
-    height: 11,
-    top: "50%",
-    position: "absolute",
-  },
-  capIcon: {
-    marginTop: -1.95,
-    width: 1,
-    height: 4,
-    opacity: 0.4,
-    top: "50%",
-  },
-  capacity: {
-    marginTop: -3.65,
-    right: 4,
-    borderRadius: 1,
-    width: 18,
-    height: 7,
-    backgroundColor: Color.colorWhite,
-    top: "50%",
-    position: "absolute",
-  },
-  battery: {
-    marginTop: -4.2,
-    right: 14,
-    width: 24,
-    height: 11,
-    top: "50%",
-    position: "absolute",
-  },
-  wifiIcon: {
-    width: 15,
-    height: 11,
-  },
-  cellularConnectionIcon: {
-    width: 17,
-    height: 11,
-  },
-  systemDarkStatusBarD: {
-    height: 49,
-    left: 0,
-    top: 0,
-  },
   homeIndicator: {
     marginLeft: -67,
     bottom: 8,
@@ -247,23 +160,24 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   systemDarkHomeIndicator: {
+    right: 0,
     bottom: 0,
     height: 37,
     left: 0,
+    position: "absolute",
   },
   buttonChild: {
     borderRadius: Border.br_xl,
     backgroundColor: Color.colorWhite,
     left: 0,
     top: 0,
+    width: 354,
   },
   continue: {
     top: 12,
     left: 135,
     color: Color.colorMediumseagreen_100,
-    fontFamily: FontFamily.poppinsBold,
-    fontWeight: "700",
-    fontSize: FontSize.size_lg,
+    textAlign: "center",
   },
   button: {
     top: 702,

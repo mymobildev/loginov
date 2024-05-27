@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
-import { Image } from "expo-image";
+import { Text, StyleSheet, Image, View } from "react-native";
+import SystemDarkStatusBarD from "../components/SystemDarkStatusBarD";
 import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
 
 const Transaction = () => {
@@ -12,7 +12,7 @@ const Transaction = () => {
         </Text>
         <Image
           style={[styles.arrowLeftIcon, styles.arrowLeftIconPosition]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/arrowleft.png")}
         />
       </View>
@@ -25,7 +25,7 @@ McDonald’s`}</Text>
           <View style={[styles.frameChild, styles.frameChildLayout]} />
           <Image
             style={[styles.image2Icon, styles.mcLayout]}
-            contentFit="cover"
+            resizeMode="cover"
             source={require("../assets/image-2.png")}
           />
         </View>
@@ -33,12 +33,12 @@ McDonald’s`}</Text>
       <View style={styles.pembayaran}>
         <Image
           style={[styles.pembayaranChild, styles.pembayaranLayout]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/vector-8.png")}
         />
         <Image
           style={[styles.pembayaranItem, styles.pembayaranLayout]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/vector-8.png")}
         />
         <Text style={[styles.burgersKingHotContainer, styles.textPosition1]}>
@@ -60,28 +60,14 @@ $ 15.00
           <Text style={styles.adminFee}>$ 99.99</Text>
         </Text>
       </View>
-      <View style={styles.systemDarkStatusBarD}>
-        <Text style={[styles.time, styles.timePosition]}>9:41</Text>
-        <View style={[styles.battery, styles.timePosition]}>
-          <View style={[styles.border, styles.timePosition]} />
-          <Image
-            style={[styles.capIcon, styles.timePosition]}
-            contentFit="cover"
-            source={require("../assets/cap.png")}
-          />
-          <View style={[styles.capacity, styles.timePosition]} />
-        </View>
-        <Image
-          style={styles.wifiIcon}
-          contentFit="cover"
-          source={require("../assets/wifi.png")}
-        />
-        <Image
-          style={styles.cellularConnectionIcon}
-          contentFit="cover"
-          source={require("../assets/cellular-connection.png")}
-        />
-      </View>
+      <SystemDarkStatusBarD
+        dimensionCode={require("../assets/cap.png")}
+        dimensionCodeText={require("../assets/wifi.png")}
+        dimensionCodeValue={require("../assets/cellular-connection.png")}
+        propColor="#000"
+        propBorderColor="#000"
+        propBackgroundColor="#000"
+      />
       <View style={styles.systemDarkHomeIndicator}>
         <View style={styles.homeIndicator} />
       </View>
@@ -101,8 +87,8 @@ $ 15.00
         <View style={[styles.tiud1, styles.tiudLayout1]}>
           <View style={[styles.tiudItem, styles.tiudLayout]} />
           <View style={[styles.debitParent, styles.parentPosition]}>
-            <Text style={[styles.debit, styles.debitTypo]}>Debit</Text>
-            <Text style={[styles.text7, styles.textPosition]}>
+            <Text style={[styles.debit, styles.textFlexBox]}>Debit</Text>
+            <Text style={[styles.text7, styles.textFlexBox]}>
               <Text style={styles.text5}>{`$ `}</Text>
               <Text style={styles.text6Typo}>40.24</Text>
             </Text>
@@ -111,8 +97,8 @@ $ 15.00
         <View style={[styles.tiud2, styles.tiudLayout1]}>
           <View style={[styles.tiudInner, styles.tiudLayout]} />
           <View style={[styles.balanceParent, styles.parentPosition]}>
-            <Text style={[styles.balance, styles.debitTypo]}>Balance</Text>
-            <Text style={[styles.text7, styles.textPosition]}>
+            <Text style={[styles.balance, styles.textFlexBox]}>Balance</Text>
+            <Text style={[styles.text7, styles.textFlexBox]}>
               <Text style={styles.text5}>{`$ `}</Text>
               <Text style={styles.text6Typo}>115.00</Text>
             </Text>
@@ -121,15 +107,15 @@ $ 15.00
       </View>
       <View style={styles.barcode}>
         <Text
-          style={[styles.ifYouNeed, styles.ifYouNeedTypo]}
+          style={[styles.ifYouNeed, styles.textFlexBox]}
         >{`If you need price payment details,
 please scan the barcode below`}</Text>
         <Image
           style={styles.barcode11}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/barcode-1-1.png")}
         />
-        <Text style={[styles.text13, styles.text13Typo]}>
+        <Text style={[styles.text13, styles.textFlexBox]}>
           2656148137193283627-236456
         </Text>
       </View>
@@ -145,6 +131,7 @@ const styles = StyleSheet.create({
   arrowLeftIconPosition: {
     top: 4,
     left: 0,
+    position: "absolute",
   },
   mcLayout: {
     height: 50,
@@ -153,8 +140,6 @@ const styles = StyleSheet.create({
   ifYouNeedTypo: {
     fontSize: FontSize.size_sm,
     color: Color.colorBlack,
-    letterSpacing: 0,
-    position: "absolute",
   },
   frameChildLayout: {
     width: 50,
@@ -174,10 +159,6 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.robotoRegular,
     fontSize: FontSize.size_sm,
     letterSpacing: 0,
-    position: "absolute",
-  },
-  timePosition: {
-    top: "50%",
     position: "absolute",
   },
   text3Typo: {
@@ -212,21 +193,17 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_xs,
     fontFamily: FontFamily.robotoRegular,
     lineHeight: 27,
-    letterSpacing: 0,
     top: 0,
-    position: "absolute",
   },
   textPosition: {
     top: 18,
     lineHeight: 27,
     color: Color.colorBlack,
     left: 0,
-    letterSpacing: 0,
     fontSize: FontSize.size_lg,
-    position: "absolute",
   },
-  text13Typo: {
-    fontSize: FontSize.size_lg,
+  textFlexBox: {
+    textAlign: "center",
     letterSpacing: 0,
     position: "absolute",
   },
@@ -235,15 +212,14 @@ const styles = StyleSheet.create({
     color: Color.colorMediumseagreen_100,
     letterSpacing: 0,
     fontSize: FontSize.size_lg,
-    position: "absolute",
     top: 0,
     left: 30,
+    position: "absolute",
   },
   arrowLeftIcon: {
     width: 20,
     height: 20,
     left: 0,
-    position: "absolute",
     overflow: "hidden",
   },
   back: {
@@ -257,9 +233,11 @@ const styles = StyleSheet.create({
     color: Color.colorBlack,
     left: 0,
     top: 4,
+    position: "absolute",
     textAlign: "left",
     fontFamily: FontFamily.poppinsBold,
     fontWeight: "700",
+    letterSpacing: 0,
   },
   frameChild: {
     borderRadius: Border.br_3xs,
@@ -308,64 +286,6 @@ const styles = StyleSheet.create({
     left: 30,
     position: "absolute",
   },
-  time: {
-    marginTop: -7.5,
-    left: 21,
-    fontSize: FontSize.size_mini,
-    fontWeight: "600",
-    fontFamily: FontFamily.sFProText,
-    width: 54,
-    textAlign: "center",
-    color: Color.colorBlack,
-    letterSpacing: 0,
-  },
-  border: {
-    marginTop: -5.65,
-    right: 2,
-    borderRadius: 3,
-    borderStyle: "solid",
-    borderColor: Color.colorBlack,
-    borderWidth: 1,
-    width: 22,
-    opacity: 0.35,
-    height: 11,
-  },
-  capIcon: {
-    marginTop: -1.95,
-    width: 1,
-    height: 4,
-    opacity: 0.4,
-    right: 0,
-  },
-  capacity: {
-    marginTop: -3.65,
-    right: 4,
-    borderRadius: 1,
-    backgroundColor: Color.colorBlack,
-    width: 18,
-    height: 7,
-  },
-  battery: {
-    marginTop: -4.2,
-    right: 14,
-    width: 24,
-    height: 11,
-  },
-  wifiIcon: {
-    width: 15,
-    height: 11,
-  },
-  cellularConnectionIcon: {
-    width: 17,
-    height: 11,
-  },
-  systemDarkStatusBarD: {
-    height: 49,
-    right: 0,
-    left: 0,
-    top: 0,
-    position: "absolute",
-  },
   homeIndicator: {
     marginLeft: -67,
     bottom: 8,
@@ -377,9 +297,9 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   systemDarkHomeIndicator: {
+    right: 0,
     bottom: 0,
     height: 37,
-    right: 0,
     left: 0,
     position: "absolute",
   },
@@ -400,12 +320,16 @@ const styles = StyleSheet.create({
     left: 9,
     color: "#caa40d",
     textAlign: "left",
+    letterSpacing: 0,
+    position: "absolute",
   },
   text5: {
     fontFamily: FontFamily.robotoRegular,
   },
   text4: {
     textAlign: "left",
+    letterSpacing: 0,
+    position: "absolute",
   },
   creditParent: {
     left: 26,
@@ -420,10 +344,17 @@ const styles = StyleSheet.create({
   debit: {
     left: 20,
     color: Color.colorTomato_100,
-    textAlign: "center",
+    fontSize: FontSize.size_xs,
+    fontFamily: FontFamily.robotoRegular,
+    lineHeight: 27,
+    top: 0,
   },
   text7: {
-    textAlign: "center",
+    top: 18,
+    lineHeight: 27,
+    color: Color.colorBlack,
+    left: 0,
+    fontSize: FontSize.size_lg,
   },
   debitParent: {
     left: 17,
@@ -437,7 +368,10 @@ const styles = StyleSheet.create({
   },
   balance: {
     left: 14,
-    textAlign: "center",
+    fontSize: FontSize.size_xs,
+    fontFamily: FontFamily.robotoRegular,
+    lineHeight: 27,
+    top: 0,
     color: Color.colorMediumseagreen_100,
   },
   balanceParent: {
@@ -456,9 +390,9 @@ const styles = StyleSheet.create({
   },
   ifYouNeed: {
     left: 78,
-    textAlign: "center",
     fontFamily: FontFamily.robotoRegular,
     color: Color.colorBlack,
+    fontSize: FontSize.size_sm,
     top: 0,
   },
   barcode11: {
@@ -472,10 +406,9 @@ const styles = StyleSheet.create({
   text13: {
     top: 172,
     left: 52,
-    textAlign: "center",
     fontFamily: FontFamily.robotoRegular,
     color: Color.colorBlack,
-    letterSpacing: 0,
+    fontSize: FontSize.size_lg,
   },
   barcode: {
     top: 594,

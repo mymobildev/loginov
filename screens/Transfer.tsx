@@ -1,6 +1,8 @@
 import * as React from "react";
-import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import KotakEntah from "../components/KotakEntah";
+import SystemDarkStatusBarD from "../components/SystemDarkStatusBarD";
+import Scroll1 from "../components/Scroll1";
 import { FontSize, Color, FontFamily, Border } from "../GlobalStyles";
 
 const Transfer = () => {
@@ -9,15 +11,15 @@ const Transfer = () => {
       <View style={styles.groupParent}>
         <Image
           style={styles.frameChild}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/group-4.png")}
         />
         <View style={[styles.dol, styles.amountLayout]}>
-          <Text style={[styles.text, styles.textFlexBox1]}>
-            <Text style={styles.textTypo1}>$</Text>
+          <Text style={[styles.text, styles.textFlexBox]}>
+            <Text style={styles.textTypo}>$</Text>
             <Text style={styles.text2Typo}> 20.00</Text>
           </Text>
-          <Text style={[styles.totalBalance, styles.text9Typo]}>
+          <Text style={[styles.totalBalance, styles.text5Typo]}>
             Total Balance $ 155.00
           </Text>
         </View>
@@ -26,7 +28,7 @@ const Transfer = () => {
         <Text style={[styles.transfer1, styles.continueTypo]}>Transfer</Text>
         <Image
           style={[styles.arrowLeftIcon, styles.targetChildLayout]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/arrowleft.png")}
         />
       </View>
@@ -38,99 +40,43 @@ const Transfer = () => {
         <Text style={[styles.amount1, styles.text3Typo]}>Money History</Text>
         <Text style={[styles.text3, styles.text3Typo]}>20.00</Text>
       </View>
-      <View style={styles.kotakEntah}>
-        <View style={[styles.kotakEntahChild, styles.kotakLayout]} />
-        <Text style={[styles.text5, styles.textTypo]}>$ 20</Text>
-        <View style={[styles.kotakEntahItem, styles.kotakLayout]} />
-        <Text style={[styles.text6, styles.textFlexBox]}>$ 50</Text>
-        <View style={[styles.kotakEntahInner, styles.kotakLayout]} />
-        <Text style={[styles.text7, styles.textFlexBox]}>$ 100</Text>
-        <View style={[styles.rectangleView, styles.kotakLayout]} />
-        <Text style={[styles.text8, styles.textFlexBox]}>$ 200</Text>
-      </View>
+      <KotakEntah />
       <View style={styles.ukuran}>
         <Image
           style={[styles.ukuranChild, styles.ukuranPosition]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/vector-6.png")}
         />
         <Image
           style={[styles.ukuranItem, styles.ukuranPosition]}
-          contentFit="cover"
+          resizeMode="cover"
           source={require("../assets/vector-7.png")}
         />
         <View style={[styles.target, styles.targetPosition]}>
           <Image
             style={[styles.targetChild, styles.targetChildLayout]}
-            contentFit="cover"
+            resizeMode="cover"
             source={require("../assets/ellipse-19.png")}
           />
           <View style={[styles.targetItem, styles.targetPosition]} />
-          <Text style={[styles.text9, styles.text9Typo]}>20</Text>
+          <Text style={[styles.text5, styles.text5Typo]}>20</Text>
         </View>
       </View>
-      <View style={styles.systemDarkStatusBarD}>
-        <Text style={[styles.time, styles.timePosition]}>9:41</Text>
-        <View style={[styles.battery, styles.timePosition]}>
-          <View style={[styles.border, styles.timePosition]} />
-          <Image
-            style={[styles.capIcon, styles.timePosition]}
-            contentFit="cover"
-            source={require("../assets/cap.png")}
-          />
-          <View style={[styles.capacity, styles.timePosition]} />
-        </View>
-        <Image
-          style={styles.wifiIcon}
-          contentFit="cover"
-          source={require("../assets/wifi.png")}
-        />
-        <Image
-          style={styles.cellularConnectionIcon}
-          contentFit="cover"
-          source={require("../assets/cellular-connection.png")}
-        />
-      </View>
+      <SystemDarkStatusBarD
+        dimensionCode={require("../assets/cap.png")}
+        dimensionCodeText={require("../assets/wifi.png")}
+        dimensionCodeValue={require("../assets/cellular-connection.png")}
+        propColor="#000"
+        propBorderColor="#000"
+        propBackgroundColor="#000"
+      />
       <View style={styles.systemDarkHomeIndicator}>
         <View style={styles.homeIndicator} />
       </View>
-      <View style={styles.scroll}>
-        <Image
-          style={[styles.visaIcon, styles.gpayIconLayout]}
-          contentFit="cover"
-          source={require("../assets/visa.png")}
-        />
-        <View style={[styles.gpay, styles.gpayIconLayout]}>
-          <View style={[styles.gpayChild, styles.gpayIconLayout]} />
-          <View style={[styles.gpay1, styles.gpay1Layout]}>
-            <Image
-              style={[styles.search1Icon, styles.gpay1Layout]}
-              contentFit="cover"
-              source={require("../assets/search-1.png")}
-            />
-            <Text style={[styles.pay, styles.payTypo]}>Pay</Text>
-          </View>
-        </View>
-        <Image
-          style={[styles.paypalIcon, styles.gpayIconLayout]}
-          contentFit="cover"
-          source={require("../assets/paypal.png")}
-        />
-        <View style={[styles.apay, styles.gpayIconLayout]}>
-          <View style={[styles.gpayChild, styles.gpayIconLayout]} />
-          <View style={[styles.gpay1, styles.gpay1Layout]}>
-            <Image
-              style={[styles.search1Icon, styles.gpay1Layout]}
-              contentFit="cover"
-              source={require("../assets/apple-1.png")}
-            />
-            <Text style={[styles.pay1, styles.payTypo]}>Pay</Text>
-          </View>
-        </View>
-      </View>
+      <Scroll1 />
       <View style={[styles.button, styles.buttonLayout]}>
         <View style={[styles.buttonChild, styles.buttonLayout]} />
-        <Text style={[styles.continue, styles.textFlexBox]}>Continue</Text>
+        <Text style={[styles.continue, styles.continueTypo]}>Continue</Text>
       </View>
     </View>
   );
@@ -141,11 +87,11 @@ const styles = StyleSheet.create({
     height: 68,
     position: "absolute",
   },
-  textFlexBox1: {
+  textFlexBox: {
     textAlign: "left",
-    letterSpacing: 0,
+    top: 0,
   },
-  text9Typo: {
+  text5Typo: {
     fontSize: FontSize.size_xs,
     left: 6,
     textAlign: "left",
@@ -158,6 +104,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.poppinsBold,
     fontWeight: "700",
     fontSize: FontSize.size_lg,
+    letterSpacing: 0,
     position: "absolute",
   },
   targetChildLayout: {
@@ -166,32 +113,12 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   text3Typo: {
-    fontSize: FontSize.size_lg,
     color: Color.colorBlack,
+    fontSize: FontSize.size_lg,
     textAlign: "left",
     letterSpacing: 0,
     left: 0,
     position: "absolute",
-  },
-  kotakLayout: {
-    width: 75,
-    borderRadius: Border.br_3xs,
-    backgroundColor: Color.colorMediumseagreen_100,
-    height: 75,
-    top: 0,
-    position: "absolute",
-  },
-  textTypo: {
-    fontSize: FontSize.size_5xl,
-    top: 20,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
-    color: Color.colorWhite,
-    position: "absolute",
-  },
-  textFlexBox: {
-    textAlign: "center",
-    letterSpacing: 0,
   },
   ukuranPosition: {
     top: 34,
@@ -202,30 +129,6 @@ const styles = StyleSheet.create({
   targetPosition: {
     width: 26,
     top: 0,
-    position: "absolute",
-  },
-  timePosition: {
-    top: "50%",
-    position: "absolute",
-  },
-  gpayIconLayout: {
-    width: 100,
-    height: 58,
-    top: 0,
-    position: "absolute",
-  },
-  gpay1Layout: {
-    height: 30,
-    position: "absolute",
-  },
-  payTypo: {
-    top: 2,
-    left: 35,
-    fontFamily: FontFamily.poppinsBold,
-    fontWeight: "700",
-    fontSize: FontSize.size_lg,
-    textAlign: "left",
-    letterSpacing: 0,
     position: "absolute",
   },
   buttonLayout: {
@@ -245,7 +148,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
   },
-  textTypo1: {
+  textTypo: {
     fontFamily: FontFamily.robotoLight,
     fontWeight: "300",
   },
@@ -256,10 +159,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: FontSize.size_17xl,
     color: Color.colorWhite,
-    textAlign: "left",
     letterSpacing: 0,
+    textAlign: "left",
     left: 0,
-    top: 0,
     position: "absolute",
   },
   totalBalance: {
@@ -282,7 +184,6 @@ const styles = StyleSheet.create({
   },
   transfer1: {
     textAlign: "left",
-    letterSpacing: 0,
     top: 0,
     left: 30,
   },
@@ -299,14 +200,12 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   amount1: {
-    color: Color.colorBlack,
     fontFamily: FontFamily.poppinsMedium,
     fontWeight: "500",
     top: 0,
   },
   text3: {
     top: 47,
-    color: Color.colorBlack,
     fontFamily: FontFamily.robotoLight,
     fontWeight: "300",
   },
@@ -320,57 +219,6 @@ const styles = StyleSheet.create({
     width: 125,
     left: 30,
   },
-  kotakEntahChild: {
-    left: 0,
-  },
-  text5: {
-    left: 12,
-    textAlign: "left",
-    letterSpacing: 0,
-  },
-  kotakEntahItem: {
-    left: 90,
-  },
-  text6: {
-    left: 102,
-    fontSize: FontSize.size_5xl,
-    top: 20,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
-    color: Color.colorWhite,
-    position: "absolute",
-  },
-  kotakEntahInner: {
-    left: 180,
-  },
-  text7: {
-    left: 188,
-    fontSize: FontSize.size_5xl,
-    top: 20,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
-    color: Color.colorWhite,
-    position: "absolute",
-  },
-  rectangleView: {
-    left: 270,
-  },
-  text8: {
-    left: 275,
-    fontSize: FontSize.size_5xl,
-    top: 20,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
-    color: Color.colorWhite,
-    position: "absolute",
-  },
-  kotakEntah: {
-    top: 380,
-    width: 345,
-    height: 75,
-    left: 35,
-    position: "absolute",
-  },
   ukuranChild: {
     width: 354,
   },
@@ -383,83 +231,24 @@ const styles = StyleSheet.create({
   },
   targetItem: {
     borderRadius: Border.br_8xs,
-    height: 14,
     backgroundColor: Color.colorMediumseagreen_100,
-    width: 26,
+    height: 14,
     left: 0,
   },
-  text9: {
+  text5: {
     fontFamily: FontFamily.robotoLight,
     fontWeight: "300",
     top: 0,
   },
   target: {
-    height: 44,
     left: 12,
+    height: 44,
   },
   ukuran: {
     top: 485,
     height: 44,
     width: 354,
     left: 30,
-    position: "absolute",
-  },
-  time: {
-    marginTop: -7.5,
-    left: 21,
-    fontSize: FontSize.size_mini,
-    fontWeight: "600",
-    fontFamily: FontFamily.sFProText,
-    width: 54,
-    textAlign: "center",
-    letterSpacing: 0,
-    color: Color.colorBlack,
-  },
-  border: {
-    marginTop: -5.65,
-    right: 2,
-    borderRadius: 3,
-    borderStyle: "solid",
-    borderColor: Color.colorBlack,
-    borderWidth: 1,
-    width: 22,
-    opacity: 0.35,
-    height: 11,
-  },
-  capIcon: {
-    marginTop: -1.95,
-    width: 1,
-    height: 4,
-    opacity: 0.4,
-    right: 0,
-  },
-  capacity: {
-    marginTop: -3.65,
-    right: 4,
-    borderRadius: 1,
-    backgroundColor: Color.colorBlack,
-    width: 18,
-    height: 7,
-  },
-  battery: {
-    marginTop: -4.2,
-    right: 14,
-    width: 24,
-    height: 11,
-  },
-  wifiIcon: {
-    width: 15,
-    height: 11,
-  },
-  cellularConnectionIcon: {
-    width: 17,
-    height: 11,
-  },
-  systemDarkStatusBarD: {
-    height: 49,
-    right: 0,
-    left: 0,
-    top: 0,
     position: "absolute",
   },
   homeIndicator: {
@@ -473,51 +262,10 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   systemDarkHomeIndicator: {
+    right: 0,
     bottom: 0,
     height: 37,
-    right: 0,
     left: 0,
-    position: "absolute",
-  },
-  visaIcon: {
-    left: 0,
-  },
-  gpayChild: {
-    backgroundColor: Color.colorWhitesmoke,
-    left: 0,
-    borderRadius: Border.br_xl,
-  },
-  search1Icon: {
-    width: 30,
-    left: 0,
-    top: 0,
-    overflow: "hidden",
-  },
-  pay: {
-    color: "#518ef8",
-  },
-  gpay1: {
-    top: 14,
-    left: 15,
-    width: 70,
-  },
-  gpay: {
-    left: 125,
-  },
-  paypalIcon: {
-    left: 250,
-  },
-  pay1: {
-    color: Color.colorBlack,
-  },
-  apay: {
-    left: 375,
-  },
-  scroll: {
-    top: 657,
-    width: 475,
-    height: 58,
-    left: 30,
     position: "absolute",
   },
   buttonChild: {
@@ -529,11 +277,7 @@ const styles = StyleSheet.create({
   continue: {
     top: 12,
     left: 135,
-    color: Color.colorMediumseagreen_100,
-    fontFamily: FontFamily.poppinsBold,
-    fontWeight: "700",
-    fontSize: FontSize.size_lg,
-    position: "absolute",
+    textAlign: "center",
   },
   button: {
     top: 755,
